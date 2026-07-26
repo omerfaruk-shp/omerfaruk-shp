@@ -1,65 +1,70 @@
-<h1 align="center">Selam! 👋 Ben Ömer Faruk</h1>
+# 👋 Selam! Ben Ömer Faruk
+
 <p align="center">
-  💻 Python • Arduino • Web • Sunucu • Siber Güvenlik  
-  <br>
-  🧠 22 yaşında, meraklı ve üretken bir geliştiriciyim
+  <img src="https://readme-typing-svg.herokuapp.com?font=Monarchy&10s=Sadece yazılım değil, çözüm üretirim." width="500px" height="100px" />
+</p>
+
+### 🚀 Hakkımda
+22 yaşında, meraklı ve üretken bir geliştiriciyim. Yazılım dünyasında sadece kod yazmakla kalmıyor, karmaşık problemleri çözmek için teknoloji entegrasyonları yapıyorum.
+
+- 🧠 **Odak Alanlarım:** Python, Web Geliştirme, IoT Sistemleri ve Siber Güvenlik
+- 🛠️ **Çalışma Ortamım:** CLI araçları geliştirme, Web arayüzleri tasarlama ve donanım tabanlı (Arduino/ESP) çözümler.
+- 💡 **Vizyonum:** Kullanıcı dostu, hızlı ve güvenli sistemler inşa etmek.
+
+---
+
+### 🛠️ Teknoloji Yığını & Araçlar
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-399900?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/PHP-777BB0?style=for-the-badge&logo=php&logoColor=white" />
+  <img src="https://img.shields.io/badge/Linux-FCC000?style=for-the-badge&logo=linux&logoColor=black" />
+  <img src="https://img.shields.io/badge/Bash-4EAA8E?style=for-the-badge&logo=gnu-bash&logoColor=white" />
+  <img src="https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduinoportal&logoColor=white" />
+  <img src="https://img.shields.io/badge/ESP8266/321981?style=for-the-badge&logo=espressif&logoColor=white" />
 </p>
 
 ---
 
-## 🧾 Hakkımda
+### 🚀 Öne Çıkan Projelerim
 
-- 🧠 Yazılımda Python, PHP, JavaScript ile çalışıyorum  
-- 📟 Arduino, NodeMCU, ESP8266/ESP32 ile projeler yapıyorum  
-- a9d2266eef423fc971c7832bea826646
-- 🛠️ CLI araçlar, Web arayüzler ve IoT sistemleri geliştiriyorum  
+#### 🤖 [Ömerinho](https://github.com/omerfaruk-shp/Omerinho) (CLI Yapay Zeka Asistanı)
+*Terminalde çalışan, güçlü ve çok yönlü bir asistan.*
+- ✅ **Teknoloji:** Python, GPT4All, Llama3, Groq.
+- 🎙️ **Özellikler:** Sesli yanıt desteği, geçmişi hatırlama, özelleştirilebilir komut setleri.
+- 💡 *Gerçekten terminal dostu bir asistan deneyimi.*
+
+#### 🌐 [LCD Web Panel](https://github.com/omerfaruk-shp/LCD_Web_Panel) (ESP8266 Projesi)
+*IoT dünyasında görsel kontrol ve veri takibi.*
+- 📡 **Teknoloji:** ESP8266, WiFi, HTML/CSS.
+- 🔐 **Özellikler:** Şifreli web paneli üzerinden LCD ekran yönetimi ve loglama sistemleri.
+
+#### 🛡️ [Pentest Toolkit](https://github.com/omerfaruk-shp/Pentest_Toolkit) (Manjaro OS)
+*Siber güvenlik meraklıları için hızlı kurulum aracı.*
+- 📜 **Teknoloji:** Bash Script, Linux.
+- 🛠️ **Özellikler:** Sızma testi araçlarını otomatik olarak kuran kullanıcı dostu terminal arayüzü (Zenity/CLI).
 
 ---
 
-## 🔧 Kullandığım Bazı Teknolojiler
-
-![Python](https://img.shields.io/badge/-Python-333?style=flat&logo=python)
-![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=flat&logo=arduino)
-![PHP](https://img.shields.io/badge/-PHP-777BB4?style=flat&logo=php)
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![Linux](https://img.shields.io/badge/-Linux-FCC624?style=flat&logo=linux)
-![Bash](https://img.shields.io/badge/-Bash-4EAA25?style=flat&logo=gnu-bash)
-
----
-
-## 🚀 Bazı Projelerim
-
-- **Ömerinho (CLI Yapay Zeka Asistanı)**  
-  Terminalde çalışan, GPT tarzı yanıt verebilen yapay zekâ sohbet botu.  
-  `gpt4all`, `llama3`, `groq` gibi modellerle çalışıyor.  
-  Komutları öğrenebiliyor, sesli yanıt verebiliyor ve geçmiş tutuyor.  
-  ➤ Gerçek bir terminal dostu asistan 🤖
-
-- **LCD Web Panel (ESP8266)**  
-  WiFi ile LCD ekran kontrolü, özel karakterler, loglama, şifreli web panel  
-  ➤ [Projeye Git](https://github.com/omerfaruk-shp/lcd-web-panel)
-
-- **Pentest Toolkit (Manjaro)**  
-  Bash script ile sızma testi araçlarını kuran terminal aracı  
-  ➤ Zenity/CLI versiyonu mevcut
-
-## 📈 GitHub İstatistiklerim
+### 📈 GitHub İstatistikleri
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=omerfaruk-shp&show_icons=true&theme=default&hide_border=true" height="160">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=omerfaruk-shp&layout=compact&theme=default&hide_border=true" height="160">
+  <img src="https://github-readme-stats.vercel.app/api?username=omerfaruk-shp&show_icons=true&theme=tokyonight" alt="Ömer Faruk's GitHub Stats" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=omerfaruk-shp&layout=compact&theme=tokyonight" alt="Top Languages" />
 </p>
 
 ---
 
-## 📬 Bana Ulaş
+### 📬 Bana Ulaşın
+*Projelerim hakkında konuşmak veya iş birliği yapmak için her zaman mesaj atabilirsiniz!*
 
-- GitHub: [@omerfaruk-shp](https://github.com/omerfaruk-shp)  
-
----
+🌐 **GitHub:** [github.com/omerfaruk-shp](https://github.com/omerfaruk-shp)  
+💬 **İletişim:** @omerfaruk-shp
 
 <p align="center">
-  <img src="https://media.tenor.com/aBfjF_rovesAAAAM/boa-noite-com-deus.gif" width="200"/>
+  <i>"Sadece yazılım değil, çözüm üretirim."</i>
 </p>
-
-<p align="center"><b>"Sadece yazılım değil, çözüm üretirim."</b></p>
