@@ -8,37 +8,36 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 echo -e "${BLUE}=========================================${NC}"
-echo -e "${BLUE}   ARCH LINUX HIZLI KURULUM BETİĞİ      ${NC}"
+echo -e "${BLUE}   ARCH LINUX SİSTEM YAPILANDIRMASI     ${NC}"
 echo -e "${BLUE}=========================================${NC}"
 
-# 1. İşlemci Tespiti (Microcode Seçimi)
-CPU_VENDOR=$(grep -m1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
-UCODE=""
+# 1. Saat Dilimi ve Zaman Ayarı
+echo -e "\n${BLUE}[1/5] Saat dilimi Istanbul olarak ayarlanıyor...${NC}"
+ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
+hwclock --systohc
 
-if [ "$CPU_VENDOR" == "GenuineIntel" ]; then
-    echo -e "${GREEN}[+] Intel işlemci tespit edildi. 'intel-ucode' eklenecek.${NC}"
-    UCODE="intel-ucode"
-elif [ "$CPU_VENDOR" == "AuthenticAMD" ]; then
-    echo -e "${GREEN}[+] AMD işlemci tespit edildi. 'amd-ucode' eklenecek.${NC}"
-    UCODE="amd-ucode"
-else
-    echo -e "${YELLOW}[!] Bilinmeyen işlemci mimarisi. Microcode atlanıyor.${NC}"
-fi
+# 2. Hostname (Bilgisayar Adı)
+echo -e "\n${BLUE}[2/5] Bilgisayar adı 'archlinux' olarak atanıyor...${NC}"
+echo "archlinux" > /etc/hostname
 
-# 2. Temel Paketlerin Kurulması (Pacstrap)
-echo -e "\n${BLUE}[1/3] Temel sistem ve paketler yükleniyor (pacstrap)...${NC}"
-pacstrap -K /mnt base base-devel linux linux-firmware nano networkmanager sudo grub efibootmgr $UCODE
+# 3. GRUB Önyükleyici Kurulumu
+echo -e "\n${BLUE}[3/5] GRUB önyükleyici kuruluyor ve yapılandırılıyor...${NC}"
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
 
-# 3. fstab Tablosunun Oluşturulması
-echo -e "\n${BLUE}[2/3] Disk bağlama tablosu (fstab) oluşturuluyor...${NC}"
-genfstab -U /mnt >> /mnt/etc/fstab
+# 4. İnternet Servisini Etkinleştirme
+echo -e "\n${BLUE}[4/5] NetworkManager servisi etkinleştiriliyor...${NC}"
+systemctl enable NetworkManager
 
-# 4. Saat Dilimi ve Zaman Ayarı (timedatectl)
-echo -e "\n${BLUE}[3/3] Saat ve zaman senkronizasyonu yapılıyor...${NC}"
-timedatectl set-ntp true || true
+# 5. Root Şifresi Belirleme
+echo -e "\n${BLUE}[5/5] Root kullanıcısı için şifre belirleyin:${NC}"
+echo -e "${YELLOW}Lütfen ekrana yazacağınız yeni şifrenizi girin:${NC}"
+passwd
 
 echo -e "\n${GREEN}=========================================${NC}"
-echo -e "${GREEN}  TEMEL SİSTEM YÜKLEMESİ TAMAMLANDI!     ${NC}"
+echo -e "${GREEN}    YAPILANDIRMA BAŞARIYLA TAMAMLANDI!   ${NC}"
 echo -e "${GREEN}=========================================${NC}"
-echo -e "Şimdi yeni sisteme geçmek için şu komutu çalıştırın:\n"
-echo -e "   ${YELLOW}arch-chroot /mnt${NC}\n"
+echo -e "Sistemden çıkıp yeniden başlatmak için sırasıyla şu komutları çalıştırın:\n"
+echo -e "   1. ${YELLOW}exit${NC}"
+echo -e "   2. ${YELLOW}umount -R /mnt${NC}"
+echo -e "   3. ${YELLOW}reboot${NC}\n"
