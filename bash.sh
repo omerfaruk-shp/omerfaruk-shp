@@ -1,24 +1,44 @@
 #!/bin/bash
 set -e
 
-DISK="/dev/nvme0n1"
+# Renkli Çıktı Tanımları
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
 
-echo "[1/4] Disk sıfırlanıyor ve GPT bölüm tablosu oluşturuluyor..."
-parted -s "$DISK" mklabel gpt
+echo -e "${BLUE}=========================================${NC}"
+echo -e "${BLUE}   ARCH LINUX HIZLI KURULUM BETİĞİ      ${NC}"
+echo -e "${BLUE}=========================================${NC}"
 
-echo "[2/4] 1 GB EFI ve kalan alan için Root bölümü ayrılıyor..."
-parted -s "$DISK" mkpart "EFI" fat32 1MiB 1024MiB
-parted -s "$DISK" set 1 esp on
-parted -s "$DISK" mkpart "Root" ext4 1024MiB 100%
+# 1. İşlemci Tespiti (Microcode Seçimi)
+CPU_VENDOR=$(grep -m1 'vendor_id' /proc/cpuinfo | awk '{print $3}')
+UCODE=""
 
-echo "[3/4] Bölümler biçimlendiriliyor (FAT32 & ext4)..."
-mkfs.fat -F32 "${DISK}p1"
-mkfs.ext4 -F "${DISK}p2"
+if [ "$CPU_VENDOR" == "GenuineIntel" ]; then
+    echo -e "${GREEN}[+] Intel işlemci tespit edildi. 'intel-ucode' eklenecek.${NC}"
+    UCODE="intel-ucode"
+elif [ "$CPU_VENDOR" == "AuthenticAMD" ]; then
+    echo -e "${GREEN}[+] AMD işlemci tespit edildi. 'amd-ucode' eklenecek.${NC}"
+    UCODE="amd-ucode"
+else
+    echo -e "${YELLOW}[!] Bilinmeyen işlemci mimarisi. Microcode atlanıyor.${NC}"
+fi
 
-echo "[4/4] Bölümler /mnt dizinine bağlanıyor (Mount)..."
-mount "${DISK}p2" /mnt
-mkdir -p /mnt/boot
-mount "${DISK}p1" /mnt/boot
+# 2. Temel Paketlerin Kurulması (Pacstrap)
+echo -e "\n${BLUE}[1/3] Temel sistem ve paketler yükleniyor (pacstrap)...${NC}"
+pacstrap -K /mnt base base-devel linux linux-firmware nano networkmanager sudo grub efibootmgr $UCODE
 
-echo "--- Bölümleme İşlemi Tamamlandı! ---"
-lsblk "$DISK"
+# 3. fstab Tablosunun Oluşturulması
+echo -e "\n${BLUE}[2/3] Disk bağlama tablosu (fstab) oluşturuluyor...${NC}"
+genfstab -U /mnt >> /mnt/etc/fstab
+
+# 4. Saat Dilimi ve Zaman Ayarı (timedatectl)
+echo -e "\n${BLUE}[3/3] Saat ve zaman senkronizasyonu yapılıyor...${NC}"
+timedatectl set-ntp true || true
+
+echo -e "\n${GREEN}=========================================${NC}"
+echo -e "${GREEN}  TEMEL SİSTEM YÜKLEMESİ TAMAMLANDI!     ${NC}"
+echo -e "${GREEN}=========================================${NC}"
+echo -e "Şimdi yeni sisteme geçmek için şu komutu çalıştırın:\n"
+echo -e "   ${YELLOW}arch-chroot /mnt${NC}\n"
