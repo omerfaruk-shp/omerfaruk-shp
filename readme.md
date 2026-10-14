@@ -8,7 +8,7 @@
 
 ### 🚀 About Me
 
-I am a **Cybersecurity Developer** and **Automation Engineer** focused on building resilient systems, security tools, and intelligent automation pipelines. I blend low-level system integration (IoT) with high-level software architectures to build secure, efficient, and reliable solutions.
+I am a **Cybersecurity Developer** and **Web Developer** focused on building resilient systems, security tools, and intelligent automation pipelines. I blend low-level system integration (IoT) with high-level software architectures to build secure, efficient, and reliable solutions.
 
 - 🎓 **Education:**
   - **Computer Programming** — *Istanbul University*
